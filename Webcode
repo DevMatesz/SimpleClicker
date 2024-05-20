@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Simple Clicker</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        button {
+            background-color: white;
+            border: 1px solid;
+            color: green;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            position: absolute;
+        }
+        #clickme {
+            background-color: green;
+            right: 50%;
+            bottom: 50%;
+            transform: translate(50%, 50%);
+        }
+        #button1 {
+            left: 20px;
+            top: 150px;
+        }
+        #button2 {
+            left: 20px;
+            top: 300px;
+        }
+        #button3 {
+            left: 20px;
+            top: 450px;
+        }
+        #button4 {
+            right: 20px;
+            top: 150px;
+        }
+        #button5 {
+            right: 20px;
+            top: 300px;
+        }
+        #button6 {
+            right: 20px;
+            top: 450px;
+        }
+        #moneytext {
+            margin: 0;
+            padding: 0;
+            left: 200px;
+            position: absolute;
+            bottom: 0;
+        }
+        #clickingpowertext {
+            margin: 0;
+            right: 200px;
+            padding: 20;
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <p id="moneytext"></p>
+    <p id="clickingpowertext"></p>
+    <button id="clickme">buttontoclick</button>
+    <button id="button1">przycisk1</button>
+    <button id="button2">przycisk2</button>
+    <button id="button3">przycisk3</button>
+    <button id="button4">przycisk4</button>
+    <button id="button5">przycisk5</button>
+    <button id="button6">przycisk6</button>
+    <script>
+        var money = 0;
+        var clickingpower = 1;
+
+        var moneyParagraph = document.getElementById("moneytext");
+        var clickingparagraph = document.getElementById("clickingpowertext");
+
+        function updateDisplays() {
+            moneyParagraph.textContent = "Money: " + money;
+            clickingparagraph.textContent = "Clicking Power: " + clickingpower;
+        }
+
+        var button1cost = 50;
+        var button2cost = 250;
+        var button3cost = 1250;
+        var button4cost = 5000;
+        var button5cost = 25000;
+        var button6cost = 125000;
+
+        var clickpowerfor1 = 1;
+        var clickpowerfor2 = 5;
+        var clickpowerfor3 = 25;
+        var clickpowerfor4 = 125;
+        var clickpowerfor5 = 625;
+        var clickpowerfor6 = 3125;
+
+        function updateButtonCosts() {
+            document.getElementById("button1").textContent = button1cost + ", +1 click power";
+            document.getElementById("button2").textContent = button2cost + ", +5 click power";
+            document.getElementById("button3").textContent = button3cost + ", +25 click power";
+            document.getElementById("button4").textContent = button4cost + ", +125 click power";
+            document.getElementById("button5").textContent = button5cost + ", +625 click power";
+            document.getElementById("button6").textContent = button6cost + ", +3125 click power";
+        }
+
+        document.getElementById("clickme").addEventListener("click", function() {
+            money += clickingpower;
+            updateDisplays();
+        });
+
+        document.getElementById("button1").addEventListener("click", function() {
+            if (money >= button1cost) {
+                clickingpower += clickpowerfor1;
+                money -= button1cost;
+                button1cost += 5;
+                updateDisplays();
+                updateButtonCosts();
+            }
+        });
+
+        document.getElementById("button2").addEventListener("click", function() {
+            if (money >= button2cost) {
+                clickingpower += clickpowerfor2;
+                money -= button2cost;
+                button2cost += 25;
+                updateDisplays();
+                updateButtonCosts();
+            }
+        });
+
+        document.getElementById("button3").addEventListener("click", function() {
+            if (money >= button3cost) {
+                clickingpower += clickpowerfor3;
+                money -= button3cost;
+                button3cost += 125;
+                updateDisplays();
+                updateButtonCosts();
+            }
+        });
+
+        document.getElementById("button4").addEventListener("click", function() {
+            if (money >= button4cost) {
+                clickingpower += clickpowerfor4;
+                money -= button4cost;
+                button4cost += 625;
+                updateDisplays();
+                updateButtonCosts();
+            }
+        });
+
+        document.getElementById("button5").addEventListener("click", function() {
+            if (money >= button5cost) {
+                clickingpower += clickpowerfor5;
+                money -= button5cost;
+                button5cost += 3125;
+                updateDisplays();
+                updateButtonCosts();
+            }
+        });
+
+        document.getElementById("button6").addEventListener("click", function() {
+            if (money >= button6cost) {
+                clickingpower += clickpowerfor6;
+                money -= button6cost;
+                button6cost += 15625;
+                updateDisplays();
+                updateButtonCosts();
+            }
+        });
+
+        updateDisplays();
+        updateButtonCosts();
+    </script>
+</body>
+</html>
